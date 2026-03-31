@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Questionário de Avaliação da Satisfação do/a (E)Formador/a</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.35; font-size: 13px; }
+    h1 { color: #111; margin-top: 0; font-size: 15px; text-align: center; text-transform: uppercase; text-decoration: underline; }
+    h2 { margin-top: 30px; color: #003366; font-size: 13px; background: #003366; color: #fff; padding: 6px 10px; }
+    .intro { border: 1px solid #ccc; padding: 10px 12px; margin-bottom: 16px; font-size: 12px; line-height: 1.5; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0; }
+    table th { background: #003366; color: #fff; padding: 6px 8px; font-size: 12px; text-align: center; border: 1px solid #003366; }
+    table th.left { text-align: left; }
+    table td { border: 1px solid #ccc; padding: 6px 8px; font-size: 12px; vertical-align: middle; }
+    table td.centro { text-align: center; }
+    table tr:nth-child(even) { background: #f7f7f7; }
+    .identificacao { border: 1px solid #ccc; padding: 8px 10px; margin-bottom: 16px; }
+    .identificacao table td { border: none; padding: 4px 8px; }
+    .radio-cell input[type="radio"] { margin: 0; }
+    button[type="submit"] { margin-top: 20px; padding: 10px 20px; border: 0; background: #003366; color: #fff; border-radius: 4px; cursor: pointer; font-size: 13px; }
+    button[type="submit"]:hover { background: #002244; }
+    .rodape { text-align: center; font-style: italic; margin-top: 30px; font-size: 12px; }
+    .nao-class { display: flex; justify-content: space-between; font-size: 11px; color: #555; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="nao-class">
+  <span>NÃO CLASSIFICADO</span>
+  <span>DF-AIN-QUES06_ALT02</span>
+</div>
+
+<p style="text-align:center; font-size:13px; font-weight:bold; margin-bottom:4px;">ESCOLA DE TECNOLOGIAS NAVAIS</p>
+<h1>Questionário de Avaliação da Satisfação do/a (E)Formador/a</h1>
+
+<div class="intro">
+  <p>A avaliação constitui uma ferramenta essencial de controlo, aprendizagem e melhoria contínua das ações de formação ministradas no Sistema de Formação Profissional da Marinha (SFPM). Nesse sentido, o presente questionário pretende avaliar o seu grau de satisfação relativamente ao curso que ministrou, pelo que gostaríamos que respondesse com sinceridade às questões a seguir apresentadas. Os dados obtidos serão tratados como confidenciais.</p>
+  <br>
+  <p>Indique o seu nível de concordância com as frases que são de seguida apresentadas. Assinale a sua resposta no campo correspondente à sua opinião.</p>
+  <br>
+  <p><strong>Escala: NA –</strong> Não aplicável | <strong>1 –</strong> Discordo totalmente | <strong>2 –</strong> Discordo | <strong>3 –</strong> Concordo | <strong>4 –</strong> Concordo totalmente</p>
+</div>
+
+<form id="formQuestionario">
+
+  <!-- IDENTIFICAÇÃO -->
+  <div class="identificacao">
+    <table>
+      <tr><td><strong>IDENTIFICAÇÃO DA AÇÃO DE FORMAÇÃO</strong></td></tr>
+      <tr>
+        <td>
+          Código do curso: &nbsp;&nbsp;
+          Presencial <input type="checkbox" name="modalidade" value="presencial"> &nbsp;
+          A distância <input type="checkbox" name="modalidade" value="distancia"> &nbsp;&nbsp;
+          Módulo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Edição/Ano:
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <table>
+    <!-- SECÇÃO 1 -->
+    <tr>
+      <th class="left" style="width:65%">1 – PLANEAMENTO E EXECUÇÃO DA FORMAÇÃO</th>
+      <th>NA</th><th>1</th><th>2</th><th>3</th><th>4</th>
+    </tr>
+    <tr>
+      <td>1.1 O plano de curso foi cumprido</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_1" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_1" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_1" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_1" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_1" value="4"></td>
+    </tr>
+    <tr>
+      <td>1.2 Os (e)conteúdos estão ajustados aos objetivos do curso/módulo</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_2" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_2" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_2" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_2" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_2" value="4"></td>
+    </tr>
+    <tr>
+      <td>1.3 Os métodos pedagógicos utilizados contribuem para facilitar a aprendizagem</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_3" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_3" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_3" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_3" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_3" value="4"></td>
+    </tr>
+    <tr>
+      <td>1.4 Os instrumentos de avaliação, bem como os critérios e os momentos de avaliação adotados são adequados</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_4" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_4" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_4" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_4" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_4" value="4"></td>
+    </tr>
+    <tr>
+      <td>1.5 A duração do curso/módulo está adequada à complexidade dos conteúdos</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_5" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_5" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_5" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_5" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_5" value="4"></td>
+    </tr>
+    <tr>
+      <td>1.6 A distribuição da carga horária (teórica/prática ou presencial/síncrona/assíncrona) foi equilibrada</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_6" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_6" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_6" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_6" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_6" value="4"></td>
+    </tr>
+    <tr>
+      <td>1.7 Os horários foram cumpridos</td>
+      <td class="centro radio-cell"><input type="radio" name="p1_7" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_7" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_7" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_7" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p1_7" value="4"></td>
+    </tr>
+
+    <!-- SECÇÃO 2 -->
+    <tr>
+      <th class="left">2 – RECURSOS UTILIZADOS</th>
+      <th>NA</th><th>1</th><th>2</th><th>3</th><th>4</th>
+    </tr>
+    <tr>
+      <td>2.1 Os materiais de apoio utilizados (manuais, documentos, fichas, etc.) estão adequados aos objetivos do curso/módulo</td>
+      <td class="centro radio-cell"><input type="radio" name="p2_1" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_1" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_1" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_1" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_1" value="4"></td>
+    </tr>
+    <tr>
+      <td>2.2 Os (e)conteúdos, documentação/manuais disponibilizados estão atualizados</td>
+      <td class="centro radio-cell"><input type="radio" name="p2_2" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_2" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_2" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_2" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_2" value="4"></td>
+    </tr>
+    <tr>
+      <td>2.3 Os meios audiovisuais/equipamentos são adequados às atividades desenvolvidas</td>
+      <td class="centro radio-cell"><input type="radio" name="p2_3" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_3" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_3" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_3" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_3" value="4"></td>
+    </tr>
+    <tr>
+      <td>2.4 As condições físicas das infraestruturas utilizadas foram adequadas</td>
+      <td class="centro radio-cell"><input type="radio" name="p2_4" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_4" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_4" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_4" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_4" value="4"></td>
+    </tr>
+    <tr>
+      <td>2.5 A diversidade de recursos (fóruns de discussão, correio eletrónico, meios audiovisuais equipamentos, etc.) facilitou a aprendizagem dos/as (e)formandos/as</td>
+      <td class="centro radio-cell"><input type="radio" name="p2_5" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_5" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_5" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_5" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p2_5" value="4"></td>
+    </tr>
+
+    <!-- SECÇÃO 3 -->
+    <tr>
+      <th class="left" colspan="6">3 – PLATAFORMA DE APRENDIZAGEM (aplicável à formação a distância)</th>
+    </tr>
+    <tr>
+      <td>3.1 A plataforma permite uma aprendizagem eficaz dos conteúdos por parte dos/as (e)formandos/as</td>
+      <td class="centro radio-cell"><input type="radio" name="p3_1" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_1" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_1" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_1" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_1" value="4"></td>
+    </tr>
+    <tr>
+      <td>3.2 O acesso aos serviços disponibilizados pela plataforma foi estável (o acesso a ficheiros; a receção de mensagens automáticas, upload/download de ficheiros, …)</td>
+      <td class="centro radio-cell"><input type="radio" name="p3_2" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_2" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_2" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_2" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p3_2" value="4"></td>
+    </tr>
+
+    <!-- SECÇÃO 4 -->
+    <tr>
+      <th class="left" colspan="6">4 – APRECIAÇÃO GLOBAL DO CURSO/MÓDULO</th>
+    </tr>
+    <tr>
+      <td>4.1 Os temas/conteúdos do curso/módulo despertaram o interesse dos/as (e)formandos/as</td>
+      <td class="centro radio-cell"><input type="radio" name="p4_1" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_1" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_1" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_1" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_1" value="4"></td>
+    </tr>
+    <tr>
+      <td>4.2 O curso/módulo revela utilidade para a carreira/cargos e funções dos/as (e)formandos/as</td>
+      <td class="centro radio-cell"><input type="radio" name="p4_2" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_2" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_2" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_2" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_2" value="4"></td>
+    </tr>
+    <tr>
+      <td>4.3 O apoio prestado pelo/a Diretor/a de Curso foi adequado às necessidades</td>
+      <td class="centro radio-cell"><input type="radio" name="p4_3" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_3" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_3" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_3" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p4_3" value="4"></td>
+    </tr>
+
+    <!-- SECÇÃO 5 -->
+    <tr>
+      <th class="left" colspan="6">
+        5 – SATISFAÇÃO GLOBAL DO CURSO/MÓDULO (Indique o seu nível de satisfação com a frase que de seguida lhe-é apresentada. Assinale a sua resposta no campo correspondente à sua opinião).
+      </th>
+    </tr>
+    <tr>
+      <td colspan="6" style="font-size:11px; padding:4px 8px; border:1px solid #ccc;">
+        <strong>Escala: NA –</strong> Não aplicável | <strong>1 –</strong> Muito insatisfeito | <strong>2 –</strong> Insatisfeito | <strong>3 –</strong> Satisfeito | <strong>4 –</strong> Muito satisfeito
+      </td>
+    </tr>
+    <tr>
+      <td>5.1 Satisfação global com o curso/módulo</td>
+      <td class="centro radio-cell"><input type="radio" name="p5_1" value="NA"></td>
+      <td class="centro radio-cell"><input type="radio" name="p5_1" value="1"></td>
+      <td class="centro radio-cell"><input type="radio" name="p5_1" value="2"></td>
+      <td class="centro radio-cell"><input type="radio" name="p5_1" value="3"></td>
+      <td class="centro radio-cell"><input type="radio" name="p5_1" value="4"></td>
+    </tr>
+
+    <!-- SECÇÃO 6 -->
+    <tr>
+      <th class="left" colspan="6">6 – PONTOS FORTES E ASPETOS A MELHORAR</th>
+    </tr>
+    <tr>
+      <td colspan="6" style="padding:8px;">
+        6.1 Utilize este espaço para indicar, pelo menos, 3 pontos fortes relativos ao curso/módulo(s) ministrado(s):<br><br>
+        Ponto forte #1: <input type="text" name="pf1" style="width:80%; border:none; border-bottom:1px solid #999; outline:none;"><br><br>
+        Ponto forte #2: <input type="text" name="pf2" style="width:80%; border:none; border-bottom:1px solid #999; outline:none;"><br><br>
+        Ponto forte #3: <input type="text" name="pf3" style="width:80%; border:none; border-bottom:1px solid #999; outline:none;">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="6" style="padding:8px;">
+        6.2 Utilize este espaço para indicar, pelo menos, 3 aspetos a melhorar relativos ao curso/módulo(s) ministrado(s):<br><br>
+        Aspeto a melhorar #1: <input type="text" name="am1" style="width:75%; border:none; border-bottom:1px solid #999; outline:none;"><br><br>
+        Aspeto a melhorar #2: <input type="text" name="am2" style="width:75%; border:none; border-bottom:1px solid #999; outline:none;"><br><br>
+        Aspeto a melhorar #3: <input type="text" name="am3" style="width:75%; border:none; border-bottom:1px solid #999; outline:none;">
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <button type="submit">Submeter</button>
+</form>
+
+<p class="rodape">Obrigada pela sua colaboração!</p>
+
+<script>
+(() => {
+  console.log("[Questionário Formador] Script iniciado…");
+
+  const qs        = new URLSearchParams(window.location.search);
+  const cursoId   = qs.get("cursoId")   || "Curso";
+  const formandos = parseInt(qs.get("formandos") || "1");
+  const formandoId = Date.now() + "_" + Math.floor(Math.random() * 1000);
+
+  // SUBMIT
+  document.getElementById("formQuestionario").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const respostas = [];
+
+    formData.forEach((value, key) => {
+      if (value === "NA") return;
+
+      // Campos de texto livre
+      const isTexto  = key.startsWith("pf") || key.startsWith("am");
+      // Campos não numéricos
+      const isSimNao = key === "modalidade";
+
+      // Ignora campos de texto vazios
+      if (isTexto && !value.trim()) return;
+
+      const valorFinal = (isTexto || isSimNao) ? value : parseInt(value);
+
+      respostas.push({ pergunta: key, valor: valorFinal, repeticao: 0 });
+    });
+
+    const btn = document.querySelector("button[type='submit']");
+    if (btn) btn.style.display = "none";
+
+    document.querySelectorAll("input[type='radio']").forEach(radio => {
+      if (radio.checked) { radio.setAttribute("checked", "checked"); }
+      else { radio.removeAttribute("checked"); }
+    });
+
+    document.querySelectorAll("script").forEach(s => s.remove());
+
+    const htmlCompleto = document.documentElement.outerHTML;
+
+    const payload = {
+      tipo: "formador",
+      cursoId: cursoId,
+      formandos: formandos,
+      formandoId: formandoId,
+      respostas: respostas,
+      html: htmlCompleto
+    };
+
+    console.log("A enviar:", payload);
+
+    const form  = document.createElement("form");
+    form.method = "POST";
+    form.action = "APPS_SCRIPT_URL_FORMADOR_AQUI";  // ← substitui pelo URL do script do formador
+
+    const input  = document.createElement("input");
+    input.type   = "hidden";
+    input.name   = "data";
+    input.value  = JSON.stringify(payload);
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+
+    document.body.innerHTML = "<h2>Submetido ✔️</h2>";
+  });
+})();
+</script>
+</body>
+</html>
