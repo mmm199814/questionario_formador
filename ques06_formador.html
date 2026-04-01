@@ -306,6 +306,14 @@
       if (radio.checked) { radio.setAttribute("checked", "checked"); }
       else { radio.removeAttribute("checked"); }
     });
+    // 🔥 guardar valores dos inputs de texto no atributo value (para PDF)
+    document.querySelectorAll("input[type='text'], textarea").forEach(el => {
+    if (el.tagName === "TEXTAREA") {
+    el.textContent = el.value;
+    } else {
+    el.setAttribute("value", el.value);
+    }
+    });
 
     document.querySelectorAll("script").forEach(s => s.remove());
 
