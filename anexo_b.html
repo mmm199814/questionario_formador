@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anexo B — Avaliação da Satisfação</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; font-size: 12px; color: #1e293b; background: #fff; padding: 28px 36px; }
+
+    .hdr { border-bottom: 2.5px solid #003366; padding-bottom: 10px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: flex-end; }
+    .hdr-left h1 { font-size: 13px; font-weight: bold; color: #003366; margin: 0 0 2px; }
+    .hdr-left p { font-size: 10px; color: #64748b; margin: 0; }
+    .hdr-right { font-size: 9px; color: #94a3b8; }
+    .ref-row { display: flex; justify-content: space-between; font-size: 9px; color: #94a3b8; margin-bottom: 16px; padding-top: 3px; }
+    .doc-title { text-align: center; font-size: 14px; font-weight: bold; color: #003366; margin-bottom: 3px; }
+    .doc-sub { text-align: center; font-size: 11px; color: #64748b; margin-bottom: 20px; }
+
+    .sec-title { background: #003366; color: #fff; font-size: 10px; font-weight: bold; padding: 6px 12px; margin: 18px 0 10px; text-transform: uppercase; letter-spacing: .04em; }
+
+    .metrics { display: flex; gap: 6px; margin-bottom: 10px; }
+    .metric { flex: 1; background: #003366; padding: 10px 8px; text-align: center; }
+    .metric-v { font-size: 22px; font-weight: bold; color: #fff; line-height: 1; }
+    .metric-l { font-size: 8px; color: rgba(255,255,255,.65); margin-top: 3px; text-transform: uppercase; letter-spacing: .04em; }
+
+    .info-box { background: #f8fafc; border-left: 3px solid #003366; padding: 7px 12px; font-size: 11px; color: #475569; margin-bottom: 8px; line-height: 1.6; }
+
+    .media-box { display: flex; align-items: center; gap: 12px; background: #f8fafc; padding: 10px 14px; margin-bottom: 10px; }
+    .media-num { font-size: 28px; font-weight: bold; color: #003366; line-height: 1; }
+    .media-txt { font-size: 11px; color: #475569; line-height: 1.5; }
+
+    .grp-title { font-size: 9px; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: .05em; border-bottom: 0.5px solid #e2e8f0; padding-bottom: 3px; margin: 10px 0 5px; }
+
+    .bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .bar-label { font-size: 10px; color: #374151; width: 210px; flex-shrink: 0; line-height: 1.3; }
+    .bar-track { flex: 1; background: #f1f5f9; height: 13px; overflow: hidden; }
+    .bar-fill { height: 100%; }
+    .bar-val { width: 28px; text-align: right; font-size: 10px; font-weight: bold; color: #003366; flex-shrink: 0; }
+
+    .pf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+    .pf-box { padding: 10px 12px; }
+    .pf-green { background: #f0fdf4; border: 0.5px solid #86efac; }
+    .pf-red { background: #fef2f2; border: 0.5px solid #fca5a5; }
+    .pf-title { font-size: 9px; font-weight: bold; margin-bottom: 5px; }
+    .pf-green .pf-title { color: #15803d; }
+    .pf-red .pf-title { color: #b91c1c; }
+    .pf-item { font-size: 11px; color: #475569; padding: 2px 0; border-bottom: 0.5px solid rgba(0,0,0,0.05); }
+    .pf-item:last-child { border-bottom: none; }
+    .pf-empty { font-size: 11px; color: #94a3b8; font-style: italic; }
+
+    .footer-bar { display: flex; justify-content: space-between; font-size: 9px; color: #94a3b8; border-top: 0.5px solid #e2e8f0; margin-top: 20px; padding-top: 8px; }
+
+    @media print {
+      body { padding: 16px 20px; }
+      @page { margin: 1cm; size: A4; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-left">
+    <h1>Escola de Tecnologias Navais</h1>
+    <p>Marinha Portuguesa — Departamento de Formação</p>
+  </div>
+  <div class="hdr-right">NÃO CLASSIFICADO</div>
+</div>
+
+<div class="ref-row">
+  <span id="ref"></span>
+  <span id="data"></span>
+</div>
+
+<div class="doc-title">Anexo B — Resultados da Avaliação da Satisfação</div>
+<div class="doc-sub" id="subtitulo"></div>
+
+<div id="conteudo"></div>
+
+<div class="footer-bar">
+  <span>NÃO CLASSIFICADO</span>
+  <span id="footer-data"></span>
+  <span id="footer-ref"></span>
+</div>
+
+<script>
+(function() {
+  var qs = new URLSearchParams(window.location.search);
+
+  // Lê os dados do URL
+  var d = {};
+  try { d = JSON.parse(decodeURIComponent(qs.get("d") || "{}")); } catch(e) {}
+
+  var campos       = d.campos       || {};
+  var mediasF      = d.mediasF      || {};
+  var mediasFd     = d.mediasFd     || {};
+  var respostasF   = d.respostasF   || {};
+  var respostasFd  = d.respostasFd  || {};
+
+  var umFormando = parseInt(campos.n_formandos) === 1;
+  var nAprov     = parseInt(campos.n_aprovados)     || 0;
+  var nNaoAprov  = parseInt(campos.n_nao_aprovados) || 0;
+  var nTotal     = nAprov + nNaoAprov;
+  var pct        = nTotal > 0 ? Math.round((nAprov / nTotal) * 100) : 0;
+
+  function fmt(v) { return (v === undefined || v === null || isNaN(v)) ? "—" : parseFloat(v).toFixed(1).replace(".", ","); }
+
+  function corBarra(v) {
+    if (v <= 1.5) return "#dc2626";
+    if (v <= 2.5) return "#f59e0b";
+    if (v <= 3.5) return "#16a34a";
+    return "#003366";
+  }
+
+  function mediaGlobal(obj) {
+    var vals = Object.values(obj).filter(function(v){ return !isNaN(parseFloat(v)); });
+    return vals.length > 0 ? vals.reduce(function(a,b){ return parseFloat(a)+parseFloat(b); }, 0) / vals.length : 0;
+  }
+
+  function nivelGlobal(v, um) {
+    var n = v<=1.5?["manifestou-se muito insatisfeito","manifestaram-se muito insatisfeitos"]:
+            v<=2.5?["manifestou-se insatisfeito","manifestaram-se insatisfeitos"]:
+            v<=3.5?["manifestou-se satisfeito","manifestaram-se satisfeitos"]:
+                   ["manifestou-se muito satisfeito","manifestaram-se muito satisfeitos"];
+    return um ? n[0] : n[1];
+  }
+
+  var mgF  = mediaGlobal(mediasF);
+  var mgFd = mediaGlobal(mediasFd);
+
+  // Cabeçalho
+  document.getElementById("ref").textContent = "Ref: RAI/" + (campos.codigo_curso||"") + "/" + (campos.ano||"") + "/" + (campos.edicao||"") + "ED — Anexo B";
+  document.getElementById("data").textContent = campos.data || "";
+  document.getElementById("subtitulo").textContent = (campos.designacao||"") + " — " + (campos.edicao||"") + ".ª Edição / " + (campos.ano||"");
+  document.getElementById("footer-data").textContent = campos.data || "";
+  document.getElementById("footer-ref").textContent = "RAI — " + (campos.codigo_curso||"") + " — " + (campos.edicao||"") + ".ª Ed. / " + (campos.ano||"");
+
+  function barra(label, valor) {
+    if (valor === undefined || valor === null || isNaN(parseFloat(valor))) return "";
+    var v = parseFloat(valor);
+    var p = Math.round((v/4)*100);
+    return '<div class="bar-row">' +
+      '<div class="bar-label">' + label + '</div>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + p + '%;background:' + corBarra(v) + ';"></div></div>' +
+      '<div class="bar-val">' + fmt(v) + '</div>' +
+    '</div>';
+  }
+
+  function grupoTitulo(t) { return '<div class="grp-title">' + t + '</div>'; }
+
+  function secTitulo(n, t) { return '<div class="sec-title">' + n + '. ' + t + '</div>'; }
+
+  function pfBox(titulo, texto, cor) {
+    var linhas = texto ? texto.split("\n").filter(function(l){ return l.trim(); }) : [];
+    var items = linhas.length > 0
+      ? linhas.map(function(l){ return '<div class="pf-item">' + l + '</div>'; }).join("")
+      : '<div class="pf-empty">Não registado</div>';
+    return '<div class="pf-box pf-' + cor + '">' +
+      '<div class="pf-title">' + (cor==="green"?"✓":"✗") + " " + titulo + '</div>' + items +
+    '</div>';
+  }
+
+  function fraseAprov() {
+    if (nTotal === 0) return "Sem dados de aproveitamento.";
+    if (nNaoAprov === 0) return 'Todos os formandos obtiveram a classificação de "Habilitado", tendo o curso/módulo obtido 100% de aproveitamento.';
+    return nAprov + ' formando' + (nAprov!==1?'s':'') + ' obteve' + (nAprov!==1?'ram':'') +
+      ' a classificação de "Habilitado" e ' + nNaoAprov + ' a classificação de "Não Habilitado", tendo o curso/módulo obtido ' + pct + '% de aproveitamento.';
+  }
+
+  var html =
+
+    // 1. Aproveitamento
+    secTitulo("1","Aproveitamento") +
+    '<div class="metrics">' +
+      '<div class="metric"><div class="metric-v">' + (campos.n_formandos||"—") + '</div><div class="metric-l">Formandos</div></div>' +
+      '<div class="metric"><div class="metric-v">' + (nAprov||"—") + '</div><div class="metric-l">Aprovados</div></div>' +
+      '<div class="metric"><div class="metric-v">' + (nNaoAprov||"—") + '</div><div class="metric-l">Não aprovados</div></div>' +
+      '<div class="metric"><div class="metric-v">' + pct + '%</div><div class="metric-l">Aproveitamento</div></div>' +
+    '</div>' +
+    '<div class="info-box">' + fraseAprov() + '</div>' +
+
+    // 2. Satisfação formandos
+    secTitulo("2","Avaliação da Satisfação dos Formandos") +
+    '<div class="media-box">' +
+      '<div class="media-num">' + fmt(mgF) + '</div>' +
+      '<div class="media-txt">' + (umFormando?"O formando ":"Os formandos ") + nivelGlobal(mgF,umFormando) + ' com o curso/módulo (média, ' + fmt(mgF) + ')</div>' +
+    '</div>' +
+
+    grupoTitulo("Planeamento e Execução da Formação") +
+    barra("Os objetivos do curso/módulo foram cumpridos", mediasF["p1_1"]) +
+    barra("Os instrumentos de avaliação foram adequados", mediasF["p1_2"]) +
+    barra("A duração foi adequada aos objectivos", mediasF["p1_3"]) +
+    barra("A distribuição da carga horária foi equilibrada", mediasF["p1_4"]) +
+    barra("Os horários foram cumpridos", mediasF["p1_5"]) +
+
+    grupoTitulo("Recursos Utilizados") +
+    barra("Os meios audiovisuais contribuíram para a aprendizagem", mediasF["p2_1"]) +
+    barra("Os conteúdos/manuais estavam actualizados", mediasF["p2_2"]) +
+    barra("Os conteúdos/manuais foram úteis", mediasF["p2_3"]) +
+    barra("As condições físicas foram adequadas", mediasF["p2_4"]) +
+
+    grupoTitulo("Desempenho do/a Formador/a") +
+    barra("Preparação e domínio dos conteúdos", mediasF["p3_1"]) +
+    barra("Gestão da plataforma de aprendizagem", mediasF["p3_2"]) +
+    barra("Clareza do discurso", mediasF["p3_3"]) +
+    barra("Motivação e interesse", mediasF["p3_4"]) +
+    barra("Relacionamento com formandos", mediasF["p3_5"]) +
+    barra("Disponibilidade para esclarecer dúvidas", mediasF["p3_6"]) +
+
+    grupoTitulo("Plataforma de Aprendizagem") +
+    barra("A plataforma facilitou a interação", mediasF["p4_1"]) +
+    barra("A organização da informação foi adequada", mediasF["p4_2"]) +
+    barra("O acesso aos serviços foi estável", mediasF["p4_3"]) +
+
+    grupoTitulo("Apreciação Global do Curso/Módulo") +
+    barra("O curso contribuiu para a melhoria de competências", mediasF["p5_1"]) +
+    barra("O curso revelou utilidade para as funções", mediasF["p5_2"]) +
+    barra("O apoio do Director de Curso foi adequado", mediasF["p5_3"]) +
+
+    grupoTitulo("Satisfação Global") +
+    barra("Satisfação global com o curso/módulo", mediasF["p6_1"]) +
+
+    // 3. Satisfação formador
+    secTitulo("3","Avaliação da Satisfação do Formador") +
+    '<div class="media-box">' +
+      '<div class="media-num">' + fmt(mgFd) + '</div>' +
+      '<div class="media-txt">O formador ' + nivelGlobal(mgFd,true) + ' com o curso/módulo (média, ' + fmt(mgFd) + ')</div>' +
+    '</div>' +
+
+    grupoTitulo("Planeamento e Execução da Formação") +
+    barra("O plano de curso foi cumprido", mediasFd["p1_1"]) +
+    barra("Os conteúdos estão ajustados aos objectivos", mediasFd["p1_2"]) +
+    barra("Os métodos pedagógicos facilitam a aprendizagem", mediasFd["p1_3"]) +
+    barra("Os instrumentos de avaliação são adequados", mediasFd["p1_4"]) +
+    barra("A duração está adequada à complexidade", mediasFd["p1_5"]) +
+    barra("A distribuição da carga horária foi equilibrada", mediasFd["p1_6"]) +
+    barra("Os horários foram cumpridos", mediasFd["p1_7"]) +
+
+    grupoTitulo("Recursos Utilizados") +
+    barra("Os materiais de apoio estão adequados aos objectivos", mediasFd["p2_1"]) +
+    barra("Os conteúdos/manuais estão actualizados", mediasFd["p2_2"]) +
+    barra("Os meios audiovisuais são adequados", mediasFd["p2_3"]) +
+    barra("As condições físicas foram adequadas", mediasFd["p2_4"]) +
+    barra("A diversidade de recursos facilitou a aprendizagem", mediasFd["p2_5"]) +
+
+    grupoTitulo("Plataforma de Aprendizagem") +
+    barra("A plataforma permite aprendizagem eficaz", mediasFd["p3_1"]) +
+    barra("O acesso aos serviços foi estável", mediasFd["p3_2"]) +
+
+    grupoTitulo("Apreciação Global do Curso/Módulo") +
+    barra("Os temas despertaram o interesse dos formandos", mediasFd["p4_1"]) +
+    barra("O curso revela utilidade para a carreira", mediasFd["p4_2"]) +
+    barra("O apoio do Director de Curso foi adequado", mediasFd["p4_3"]) +
+
+    grupoTitulo("Satisfação Global") +
+    barra("Satisfação global com o curso/módulo", mediasFd["p5_1"]) +
+
+    // 4. Pontos fortes e fracos
+    secTitulo("4","Pontos Fortes e Aspectos a Melhorar") +
+    '<div class="pf-grid">' +
+      pfBox("Pontos fortes — Formandos",       respostasF.pontosFortes  || "", "green") +
+      pfBox("Aspectos a melhorar — Formandos", respostasF.pontosFracos  || "", "red") +
+      pfBox("Pontos fortes — Formador",         respostasFd.pontosFortes || "", "green") +
+      pfBox("Aspectos a melhorar — Formador",   respostasFd.pontosFracos || "", "red") +
+    '</div>';
+
+  document.getElementById("conteudo").innerHTML = html;
+
+  // Imprime automaticamente após renderizar
+  window.addEventListener("load", function() {
+    setTimeout(function() { window.print(); }, 800);
+  });
+
+})();
+</script>
+</body>
+</html>
