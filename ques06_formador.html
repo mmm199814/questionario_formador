@@ -274,7 +274,24 @@
   const qs        = new URLSearchParams(window.location.search);
   const cursoId   = qs.get("cursoId")   || "Curso";
   const formandos = parseInt(qs.get("formandos") || "1");
-  const formandoId = Date.now() + "_" + Math.floor(Math.random() * 1000);
+  const ano       = qs.get("ano") || new Date().getFullYear().toString();
+
+  // ID persistente no localStorage
+  const storageKey = "formadorId_" + cursoId;
+  let formandoId   = localStorage.getItem(storageKey);
+  if (!formandoId) {
+    formandoId = cursoId + "_f_" + Date.now() + "_" + Math.floor(Math.random() * 9999);
+    localStorage.setItem(storageKey, formandoId);
+  }
+
+  // Verifica se já submeteu
+  const jaSubmeteu = localStorage.getItem("submetido_f_" + cursoId);
+  if (jaSubmeteu) {
+    document.body.innerHTML = '<div style="font-family:Arial;text-align:center;padding:60px 20px;">' +
+      '<h2 style="color:#003366;">✓ Questionário já submetido</h2>' +
+      '<p style="color:#666;margin-top:12px;">Já submeteste o teu questionário para este curso.<br>Obrigada pela tua colaboração!</p>' +
+      '</div>';
+  }
 
   // SUBMIT
   document.getElementById("formQuestionario").addEventListener("submit", function(e) {
@@ -306,14 +323,6 @@
       if (radio.checked) { radio.setAttribute("checked", "checked"); }
       else { radio.removeAttribute("checked"); }
     });
-    // 🔥 guardar valores dos inputs de texto no atributo value (para PDF)
-    document.querySelectorAll("input[type='text'], textarea").forEach(el => {
-    if (el.tagName === "TEXTAREA") {
-    el.textContent = el.value;
-    } else {
-    el.setAttribute("value", el.value);
-    }
-    });
 
     document.querySelectorAll("script").forEach(s => s.remove());
 
@@ -324,6 +333,7 @@
       cursoId: cursoId,
       formandos: formandos,
       formandoId: formandoId,
+      ano: ano,
       respostas: respostas,
       html: htmlCompleto
     };
@@ -332,7 +342,7 @@
 
     const form  = document.createElement("form");
     form.method = "POST";
-    form.action = "https://script.google.com/macros/s/AKfycbwZsxUaTJbHq7QJipFXL_4vnjxABAcW6WPY0mrSdznB3YQpVCNyuz6CNYmATUEKfM910w/exec";  // ← substitui pelo URL do script do formador
+    form.action = "APPS_SCRIPT_URL_FORMADOR_AQUI";  // ← substitui pelo URL do script do formador
 
     const input  = document.createElement("input");
     input.type   = "hidden";
@@ -341,8 +351,11 @@
 
     form.appendChild(input);
     document.body.appendChild(form);
-    form.submit();
 
+    // Marca como submetido no localStorage
+    localStorage.setItem("submetido_f_" + cursoId, "1");
+
+    form.submit();
     document.body.innerHTML = "<h2>Submetido ✔️</h2>";
   });
 })();
