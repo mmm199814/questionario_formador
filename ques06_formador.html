@@ -324,6 +324,11 @@
       else { radio.removeAttribute("checked"); }
     });
 
+    // Serializa valores dos campos de texto no atributo value para o PDF
+    document.querySelectorAll("input[type='text'], textarea").forEach(input => {
+      input.setAttribute("value", input.value);
+    });
+
     document.querySelectorAll("script").forEach(s => s.remove());
 
     const htmlCompleto = document.documentElement.outerHTML;
